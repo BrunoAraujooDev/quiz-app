@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         AppRoutes.landingPage: (ctx) => const LandingPage(),
-        AppRoutes.rulesPage: (ctx) => const RulesPage(),
+        AppRoutes.rulesPage: (ctx) => RulesPage(),
       },
       debugShowCheckedModeBanner: false,
     );
