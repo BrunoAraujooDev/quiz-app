@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/utils/app_routes.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({super.key});
@@ -24,7 +25,8 @@ class LandingPage extends StatelessWidget {
               width: 200,
               margin: const EdgeInsets.only(top: 20),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () =>
+                    Navigator.of(context).pushNamed(AppRoutes.rulesPage),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromRGBO(255, 195, 0, 1),
                   elevation: 1,
@@ -34,7 +36,7 @@ class LandingPage extends StatelessWidget {
                   ),
                 ),
                 child: const Text(
-                  'Start',
+                  'Rules',
                   style: TextStyle(fontSize: 18),
                 ),
               ),

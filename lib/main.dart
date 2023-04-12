@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/utils/app_routes.dart';
 import 'package:quiz_app/view/landing_page.dart';
+import 'package:quiz_app/view/rules_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +17,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LandingPage(),
+      routes: {
+        AppRoutes.landingPage: (ctx) => const LandingPage(),
+        AppRoutes.rulesPage: (ctx) => const RulesPage(),
+      },
+      debugShowCheckedModeBanner: false,
     );
   }
 }
