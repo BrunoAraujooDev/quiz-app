@@ -12,7 +12,7 @@ class CategoryCard extends StatefulWidget {
 class _CategoryCardState extends State<CategoryCard> {
   @override
   Widget build(BuildContext context) {
-    print(widget.name);
+    print('name ${widget.name}');
     return Card(
         color: Theme.of(context).colorScheme.secondary,
         child: InkWell(

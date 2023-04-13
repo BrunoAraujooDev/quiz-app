@@ -11,6 +11,7 @@ class CategoriesPage extends StatefulWidget {
 
 class _CategoriesPageState extends State<CategoriesPage> {
   bool _isLoading = true;
+  List<dynamic> categoryList = [];
 
   @override
   void initState() {
@@ -18,6 +19,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
 
     Categories().loadCategories().then((value) {
       setState(() {
+        categoryList = value;
         _isLoading = false;
       });
     });
@@ -25,7 +27,6 @@ class _CategoriesPageState extends State<CategoriesPage> {
 
   @override
   Widget build(BuildContext context) {
-    final categoryList = Categories().categories;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Choose a category bellow: '),
@@ -41,9 +42,9 @@ class _CategoriesPageState extends State<CategoriesPage> {
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 10,
               ),
-              itemCount: categoryList.keys.toList().length,
+              itemCount: categoryList.length,
               itemBuilder: (context, index) {
-                return CategoryCard(categoryList.keys.toList()[index]);
+                return CategoryCard(categoryList[index][0]);
               },
             ),
     );

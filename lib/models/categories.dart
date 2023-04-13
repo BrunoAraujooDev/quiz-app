@@ -1,17 +1,17 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+
 import 'package:quiz_app/exceptions/http_error.dart';
 
 class Categories {
-  Map<String, dynamic> _categories = {};
+  final List<List<String>> _categories = [];
   String uri = 'https://the-trivia-api.com/api/categories';
 
-  Map<String, List<String>> get categories {
-    return {..._categories};
-  }
+  List<List<String>> get categories => [..._categories];
 
-  Future<void> loadCategories() async {
+  Future<dynamic> loadCategories() async {
     final response = await http.get(Uri.parse(uri));
 
     if (response.statusCode >= 400) {
@@ -22,9 +22,17 @@ class Categories {
 
     final data = jsonDecode(response.body);
 
-    _categories = data;
+    for (var item in data.keys) {
+      List<String> auxCategories = [];
+      auxCategories.add(item);
 
-    print(_categories);
-    print('oi');
+      for (var i = 0; i < data[item].length; i++) {
+        auxCategories.add(data[item][i]);
+      }
+
+      _categories.add(auxCategories);
+    }
+
+    return [..._categories];
   }
 }
