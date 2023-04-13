@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/utils/app_routes.dart';
+import 'package:quiz_app/view/categories_page.dart';
 import 'package:quiz_app/view/landing_page.dart';
+import 'package:quiz_app/view/question_page.dart';
 import 'package:quiz_app/view/rules_page.dart';
 
 void main() {
@@ -15,11 +17,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Quiz App',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          colorScheme: Theme.of(context).colorScheme.copyWith(
+                primary: const Color.fromRGBO(3, 4, 94, 1),
+                secondary: const Color.fromRGBO(255, 195, 0, 1),
+              )),
       routes: {
         AppRoutes.landingPage: (ctx) => const LandingPage(),
         AppRoutes.rulesPage: (ctx) => RulesPage(),
+        AppRoutes.categoriesPage: (ctx) => const CategoriesPage(),
+        AppRoutes.questionPage: (ctx) => const QuestionPage(),
       },
       debugShowCheckedModeBanner: false,
     );

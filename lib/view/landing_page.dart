@@ -9,7 +9,7 @@ class LandingPage extends StatelessWidget {
     return Scaffold(
       body: Container(
         width: double.infinity,
-        decoration: const BoxDecoration(color: Color.fromRGBO(3, 4, 94, 1)),
+        decoration: BoxDecoration(color: Theme.of(context).colorScheme.primary),
         child: Center(
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -28,7 +28,7 @@ class LandingPage extends StatelessWidget {
                 onPressed: () =>
                     Navigator.of(context).pushNamed(AppRoutes.rulesPage),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromRGBO(255, 195, 0, 1),
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
                   elevation: 1,
                   padding: const EdgeInsets.symmetric(
                     vertical: 10,

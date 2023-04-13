@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/utils/app_routes.dart';
 
 class RulesPage extends StatelessWidget {
   RulesPage({super.key});
 
   final List<String> tutorial = [
-    'Choose a subject or pick up randomly question with sorted themes.',
-    'Try to answer the questions by click on the line that you assume that respond more correctly to make score.',
+    'Choose a subject or pick up randomly.',
+    'Try to answer the questions that you assume that respond more correctly to make score.',
     'Remember to answer the question as fast as you can to win bonus points.',
     'At the end, it will be presented your score.',
     'Challenge yourself and try again to make more points and raise your score!'
@@ -31,34 +32,32 @@ class RulesPage extends StatelessWidget {
                     fontSize: 20,
                   ),
                 ),
-                LimitedBox(
-                  maxWidth: double.infinity,
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: tutorial.length,
-                    itemBuilder: (context, index) {
-                      return Wrap(
-                        children: [
-                          Text(
-                            "\u2022 ${tutorial[index]}",
-                            style: const TextStyle(
-                              fontSize: 18,
-                              color: Colors.white,
-                            ),
-                          )
-                        ],
-                      );
-                    },
-                  ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: tutorial.length,
+                  itemBuilder: (context, index) {
+                    return Wrap(
+                      children: [
+                        Text(
+                          "\u2022 ${tutorial[index]}",
+                          style: const TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
+                        )
+                      ],
+                    );
+                  },
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: 200,
+                      width: 300,
                       margin: const EdgeInsets.only(top: 50),
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () => Navigator.of(context)
+                            .pushNamed(AppRoutes.categoriesPage),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color.fromRGBO(255, 195, 0, 1),
                           elevation: 1,
