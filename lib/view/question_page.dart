@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:countdown_progress_indicator/countdown_progress_indicator.dart';
+import 'package:provider/provider.dart';
+import 'package:quiz_app/models/categories.dart';
 import 'package:quiz_app/models/question_list.dart';
 
 class QuestionPage extends StatefulWidget {
@@ -10,12 +12,16 @@ class QuestionPage extends StatefulWidget {
 }
 
 class _QuestionPageState extends State<QuestionPage> {
+  late QuestionList list;
+  late final Categories categories;
+
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+    List<String> categories =
+        Provider.of<Categories>(context, listen: false).pickedCategories;
 
-    QuestionList list = QuestionList();
+    list = QuestionList(categories);
 
     list.loadQuestions();
   }

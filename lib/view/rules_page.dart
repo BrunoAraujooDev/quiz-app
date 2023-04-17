@@ -5,7 +5,7 @@ class RulesPage extends StatelessWidget {
   RulesPage({super.key});
 
   final List<String> tutorial = [
-    'Choose a subject or pick up randomly.',
+    'Choose a subject or more (three at max).',
     'Try to answer the questions that you assume that respond more correctly to make score.',
     'Remember to answer the question as fast as you can to win bonus points.',
     'At the end, it will be presented your score.',
