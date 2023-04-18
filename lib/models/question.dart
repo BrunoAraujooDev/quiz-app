@@ -3,9 +3,9 @@ class Question {
   final String id;
   final String category;
   final String correctAnswer;
-  final List<String> incorrectAnswers;
+  final List<dynamic> incorrectAnswers;
   final String question;
-  final List<String> tags;
+  final List<dynamic> tags;
   final String difficulty;
 
   Question({

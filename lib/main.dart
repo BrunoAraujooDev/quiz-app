@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quiz_app/models/categories.dart';
+import 'package:quiz_app/models/question_list.dart';
+import 'package:quiz_app/models/user.dart';
 import 'package:quiz_app/utils/app_routes.dart';
 import 'package:quiz_app/view/categories_page.dart';
 import 'package:quiz_app/view/landing_page.dart';
@@ -20,7 +22,15 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (_) => Categories(),
-        )
+        ),
+        ChangeNotifierProxyProvider<Categories, QuestionList>(
+          create: (_) => QuestionList(),
+          update: (context, categories, previous) {
+            return QuestionList(categories.pickedCategories);
+          },
+        ),
+        ChangeNotifierProvider(
+            create: (_) => User(name: '', score: 0, hits: 0)),
       ],
       child: MaterialApp(
         title: 'Quiz App',

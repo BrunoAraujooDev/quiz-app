@@ -39,8 +39,6 @@ class Categories extends ChangeNotifier {
   }
 
   void selectedCategory(String categ) {
-    print('antes de selecionar $pickedCategories');
-
     pickedCategories.add(categ);
 
     notifyListeners();

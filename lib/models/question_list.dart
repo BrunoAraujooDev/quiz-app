@@ -1,16 +1,18 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 
 import 'package:quiz_app/exceptions/http_error.dart';
 import 'package:quiz_app/models/question.dart';
 
-class QuestionList {
+class QuestionList extends ChangeNotifier {
   List<Question> _questions = [];
   String url = 'https://the-trivia-api.com/api/questions?limit=10&categories=';
   List<String> categories;
-  QuestionList(this.categories);
+  QuestionList([this.categories = const []]);
 
   List<Question> get question {
     return [..._questions];
@@ -18,15 +20,10 @@ class QuestionList {
 
   String _transformToString() {
     String categAsString = categories.join(',');
-
-    // for (int i = 0; i < categories.length; i++) {
-    //   categAsString += categories[i];
-    // }
-
     return categAsString;
   }
 
-  Future<void> loadQuestions() async {
+  Future<String> loadQuestions() async {
     String categ = _transformToString();
 
     final response = await http.get(Uri.parse('$url$categ'));
@@ -39,19 +36,19 @@ class QuestionList {
 
     final result = jsonDecode(response.body);
 
-    await result.map((item) {
-      //não tá adicionando ao vetor, provavelmente vai ter que tirar o map zzz
-      print(item);
+    print(result);
+
+    for (int i = 0; i < result.length; i++) {
       _questions.add(Question(
-        id: item.id,
-        category: item.category,
-        correctAnswer: item.correctAnswer,
-        incorrectAnswers: item.incorrectAnswers,
-        question: item.question,
-        tags: item.tags,
-        difficulty: item.difficulty,
+        id: result[i]['id'],
+        category: result[i]['category'],
+        correctAnswer: result[i]['correctAnswer'],
+        incorrectAnswers: result[i]['incorrectAnswers'],
+        question: result[i]['question'],
+        tags: result[i]['tags'],
+        difficulty: result[i]['difficulty'],
       ));
-    });
-    print(_questions);
+    }
+    return 'dados recebidos';
   }
 }

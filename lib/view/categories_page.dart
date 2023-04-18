@@ -16,7 +16,6 @@ class _CategoriesPageState extends State<CategoriesPage> {
   List<dynamic> categoryList = [];
   int _totalCategories = 0;
   late final Categories categories;
-  // Categories category = Categories();
 
   @override
   void initState() {
@@ -122,19 +121,17 @@ class _CategoriesPageState extends State<CategoriesPage> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8),
                               ),
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                 horizontal: 20,
                                 vertical: 15,
                               )),
                           onPressed: () {
-                            Navigator.of(context).pushNamed(
+                            Navigator.of(context).pushReplacementNamed(
                               AppRoutes.questionPage,
                             );
-
-                            print(categories.pickedCategories);
                           },
                           child: const Text(
-                            'Continuar',
+                            'Continue',
                             style: TextStyle(fontSize: 18),
                           )),
                     )
