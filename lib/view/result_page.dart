@@ -36,6 +36,7 @@ class ResultPage extends StatelessWidget {
                     vertical: 15,
                   )),
               onPressed: () {
+                user.resetPoints();
                 Navigator.of(context).popAndPushNamed(AppRoutes.categoriesPage);
               },
               child: const Text(

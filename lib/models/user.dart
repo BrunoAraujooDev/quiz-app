@@ -39,4 +39,9 @@ class User extends ChangeNotifier {
     hits++;
     notifyListeners();
   }
+
+  void resetPoints() {
+    score = 0;
+    hits = 0;
+  }
 }

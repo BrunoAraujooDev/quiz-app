@@ -80,7 +80,7 @@ class _QuestionPageState extends State<QuestionPage> {
       _getColor = true;
     });
 
-    Future.delayed(const Duration(seconds: 4), () {
+    Future.delayed(const Duration(seconds: 3), () {
       if (listLength == questionIndex + 1) {
         Navigator.of(context).popAndPushNamed(AppRoutes.resultPage);
       } else {
@@ -205,7 +205,7 @@ class _QuestionPageState extends State<QuestionPage> {
                                   horizontal: 20,
                                   vertical: 15,
                                 )),
-                            onPressed: _validateAnswer,
+                            onPressed: _getColor ? null : _validateAnswer,
                             child: const Text(
                               'Next',
                               style: TextStyle(fontSize: 18),
