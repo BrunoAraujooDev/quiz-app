@@ -18,7 +18,7 @@ class RulesPage extends StatelessWidget {
       body: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-        decoration: const BoxDecoration(color: Color.fromRGBO(3, 4, 94, 1)),
+        decoration: BoxDecoration(color: Theme.of(context).colorScheme.primary),
         child: Center(
           child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -59,7 +59,8 @@ class RulesPage extends StatelessWidget {
                         onPressed: () => Navigator.of(context)
                             .pushNamed(AppRoutes.categoriesPage),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromRGBO(255, 195, 0, 1),
+                          backgroundColor:
+                              Theme.of(context).colorScheme.secondary,
                           elevation: 1,
                           padding: const EdgeInsets.symmetric(
                             vertical: 10,

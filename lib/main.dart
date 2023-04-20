@@ -7,6 +7,7 @@ import 'package:quiz_app/utils/app_routes.dart';
 import 'package:quiz_app/view/categories_page.dart';
 import 'package:quiz_app/view/landing_page.dart';
 import 'package:quiz_app/view/question_page.dart';
+import 'package:quiz_app/view/result_page.dart';
 import 'package:quiz_app/view/rules_page.dart';
 
 void main() {
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
           AppRoutes.rulesPage: (ctx) => RulesPage(),
           AppRoutes.categoriesPage: (ctx) => const CategoriesPage(),
           AppRoutes.questionPage: (ctx) => const QuestionPage(),
+          AppRoutes.resultPage: (ctx) => const ResultPage(),
         },
         debugShowCheckedModeBanner: false,
       ),

@@ -3,7 +3,6 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import 'package:provider/provider.dart';
 
 import 'package:quiz_app/exceptions/http_error.dart';
 import 'package:quiz_app/models/question.dart';
@@ -18,12 +17,16 @@ class QuestionList extends ChangeNotifier {
     return [..._questions];
   }
 
+  int get listLength {
+    return _questions.length;
+  }
+
   String _transformToString() {
     String categAsString = categories.join(',');
     return categAsString;
   }
 
-  Future<String> loadQuestions() async {
+  Future<bool> loadQuestions() async {
     String categ = _transformToString();
 
     final response = await http.get(Uri.parse('$url$categ'));
@@ -36,8 +39,6 @@ class QuestionList extends ChangeNotifier {
 
     final result = jsonDecode(response.body);
 
-    print(result);
-
     for (int i = 0; i < result.length; i++) {
       _questions.add(Question(
         id: result[i]['id'],
@@ -49,6 +50,7 @@ class QuestionList extends ChangeNotifier {
         difficulty: result[i]['difficulty'],
       ));
     }
-    return 'dados recebidos';
+
+    return true;
   }
 }

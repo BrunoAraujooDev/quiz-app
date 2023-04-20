@@ -14,6 +14,8 @@ class Categories extends ChangeNotifier {
   List<List<String>> get categories => [..._categories];
 
   Future<dynamic> loadCategories() async {
+    _categories.clear();
+
     final response = await http.get(Uri.parse(uri));
 
     if (response.statusCode >= 400) {

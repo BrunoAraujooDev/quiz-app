@@ -3,4 +3,5 @@ class AppRoutes {
   static const rulesPage = '/rules-page';
   static const categoriesPage = '/categories-page';
   static const questionPage = '/question-page';
+  static const resultPage = '/result-page';
 }
